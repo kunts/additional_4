@@ -1,46 +1,46 @@
 module.exports = function multiply(first, second) {
   var res = "";
   var sum = [];
+
   var temp;
-if(first.length + second.length <15){
-  res += (first*second);
-}else{
+      if(first.length + second.length <15){
+
+          res += (first*second);
+
+      }else{
+
     var A = toArr(first);
     var B = toArr(second);
 
     for (var i = 0; i < B.length; i++){
-    temp =  mult (A , B[i]);
-    sum = mulSum(i, temp, sum);
+        temp =  mult (A , B[i]);
+        sum = mulSum(i, temp, sum);
     }
     res += (sum[sum.length-1]).toString();
 
     for (var t = sum.length-2; t>=0; t--){
-    var tempRes = (sum[t]).toString();
+        var tempRes = (sum[t]).toString();
 
-    for(var k = 3- tempRes.length; k>0; k--){
-      tempRes = "0"+ tempRes;
-    }
+        for(var k = 6- tempRes.length; k>0; k--){
+          tempRes = "0"+ tempRes;
+        }
   res += tempRes;
- }
-
+     }
 }
-
 return res;
 }
-
-
 
 function toArr(str){
   var arr = [];
 
-  if (str.length > 3){
+  if (str.length > 6){
 
-  for(var i = str.length -3; i >= 0 ; i -= 3){
-    arr.push(+(str.substr(i,3)));
+  for(var i = str.length -6; i >= 0 ; i -= 6){
+    arr.push(+(str.substr(i,6)));
   }
 
-      if(str.length % 3!=0 ){
-        arr.push(+str.substr(0,(str.length % 3)));
+      if(str.length % 6!=0 ){
+        arr.push(+str.substr(0,(str.length % 6)));
       }
 
    } else {
@@ -57,9 +57,9 @@ function mult(op1, op2){
   for (var i = 0; i < op1.length; i++){
   temp = op1[i] * op2 + memory;
 
-  if (temp >=1000){
-      arr.push(temp % 1000);
-       memory = ((temp - temp % 1000)/1000);
+  if (temp >=1000000){
+      arr.push(temp % 1000000);
+       memory = ((temp - temp % 1000000)/1000000);
       } else {
       arr.push(temp);
       memory = 0;
@@ -80,9 +80,9 @@ function mulSum(i, temp, sum){
            sum[p+i] =0;
          }
           var tempSum = sum[p+i] + temp[p] + mem;
-          if(tempSum >= 1000){
-            arr.push(tempSum % 1000);
-            mem = (((tempSum - tempSum % 1000)/1000));
+          if(tempSum >= 1000000){
+            arr.push(tempSum % 1000000);
+            mem = (((tempSum - tempSum % 1000000)/1000000));
            } else {
            arr.push(tempSum);
            mem = 0;
